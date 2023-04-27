@@ -13,6 +13,7 @@ module.exports = {
   webpack: {
     alias: {
       "@": resolve("scr"),
+      assets: resolve("src/assets"),
       components: resolve("src/components"),
       services: resolve("src/services"),
       pages: resolve("src/pages"),
