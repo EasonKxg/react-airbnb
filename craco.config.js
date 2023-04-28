@@ -15,6 +15,7 @@ module.exports = {
       "@": resolve("scr"),
       assets: resolve("src/assets"),
       components: resolve("src/components"),
+      store: resolve("src/store"),
       services: resolve("src/services"),
       pages: resolve("src/pages"),
       utils: resolve("src/utils"),
