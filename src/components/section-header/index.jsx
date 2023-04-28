@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 import { SectionHeaderStyleWrapper } from "./style";
 
 const SectionHeader = memo((props) => {
-  const { title, subtitle = "默认子标题" } = props;
+  const { title, subtitle } = props;
 
   return (
     <SectionHeaderStyleWrapper>
       <h1 className="title">{title}</h1>
-      <div className="subtitle">{subtitle}</div>
+      {subtitle && <div className="subtitle">{subtitle}</div>}
     </SectionHeaderStyleWrapper>
   );
 });

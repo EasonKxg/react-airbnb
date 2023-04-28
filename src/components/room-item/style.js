@@ -25,6 +25,7 @@ export const RoomItemStyleWrpper = styled.div`
     font-weight: 600;
   }
   .name {
+    height: 35px;
     font-weight: 600;
     margin-bottom: 5px;
     color: ${(props) => props.theme.text.secondaryColor};

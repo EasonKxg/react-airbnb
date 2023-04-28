@@ -1,12 +1,10 @@
 import React, { memo, useEffect } from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
-import { Button } from "antd";
 
-import { feachHomeDataAction } from "../../store/modules/home";
+import { feachHomeDataAction } from "store/modules/home";
 import { HomeStyleWrapper } from "./style";
-import HomeBanner from "./children/HomeBanner/HomeBanner";
-import SectionHeader from "components/section-header";
-import RoomItem from "components/room-item";
+import HomeBanner from "./children/HomeBanner";
+import HomeSection from "./children/HomeSection";
 
 const Home = memo(() => {
   const dispatch = useDispatch();
@@ -16,26 +14,32 @@ const Home = memo(() => {
   }, [dispatch]);
 
   // 映射 store 得数据
-  const { goodPriceInfo } = useSelector(
+  const { goodPriceInfo, goodHighscore } = useSelector(
     (state) => ({
       goodPriceInfo: state.homeModule.goodPriceInfo,
+      goodHighscore: state.homeModule.goodHighscore,
     }),
     shallowEqual
   );
-
   return (
     <HomeStyleWrapper>
       <HomeBanner />
-      <Button type="primary">Primary Button</Button>
-
       <div className="conter-wrap">
-        <SectionHeader title={goodPriceInfo.title} />
-        <div className="good-price">
-          {goodPriceInfo?.list?.slice(0, 8).map((item) => {
-            return <RoomItem itemData={item} key={item.id} />;
-          })}
-        </div>
+        <HomeSection infoData={goodPriceInfo} />
+        <HomeSection infoData={goodHighscore} />
       </div>
+
+      {/* <div className="conter-wrap">
+        <SectionHeader title={goodPriceInfo.title} />
+        <SectionRooms roomList={goodPriceInfo?.list?.slice(0, 8)} />
+      </div>
+      <div className="conter-wrap">
+        <SectionHeader
+          title={goodHighscore.title}
+          subtitle={goodHighscore.subtitle}
+        />
+        <SectionRooms roomList={goodHighscore?.list?.slice(0, 8)} />
+      </div> */}
     </HomeStyleWrapper>
   );
 });
