@@ -4,10 +4,10 @@ import { Rating } from "@mui/material";
 import { RoomItemStyleWrpper } from "./style";
 
 const RoomItem = memo((props) => {
-  const { itemData } = props;
+  const { itemData, itemWidth = "25%" } = props;
 
   return (
-    <RoomItemStyleWrpper>
+    <RoomItemStyleWrpper itemWidth={itemWidth}>
       <div className="inner-wrap">
         <div className="image">
           <img src={itemData.picture_url} alt="404" />
@@ -30,6 +30,7 @@ const RoomItem = memo((props) => {
 
 RoomItem.propTypes = {
   itemData: PropTypes.object,
+  itemWidth: PropTypes.string,
 };
 
 export default RoomItem;

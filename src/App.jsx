@@ -8,7 +8,7 @@ const App = memo(() => {
   return (
     <>
       <AppHeader />
-      <div>{useRoutes(routes)}</div>
+        <div>{useRoutes(routes)}</div>
       <AppFooter />
     </>
   );

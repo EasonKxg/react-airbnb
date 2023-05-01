@@ -3,6 +3,8 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
   getHomeGoodPriceData,
   getHomeHighScoreData,
+  getHomeDiscountData,
+  getHomeHotRecommendData,
 } from "services/modules/home";
 
 // 使用 createAsyncThunk 创建异步请求函数
@@ -20,6 +22,13 @@ const feachHomeDataAction = createAsyncThunk(
     getHomeHighScoreData().then((res) => {
       dispatch(changeHighscoreInfoAction(res));
     });
+    //
+    getHomeDiscountData().then((res) => {
+      dispatch(changeHomeDiscountAction(res));
+    });
+    getHomeHotRecommendData().then((res) => {
+      dispatch(changehotRecommend(res));
+    });
   }
 );
 
@@ -28,6 +37,8 @@ const home = createSlice({
   initialState: {
     goodPriceInfo: {},
     goodHighscore: {},
+    homeDiscount: {},
+    hotRecommend: {},
   },
   reducers: {
     changeGoodPriceInfoAction(state, action) {
@@ -35,6 +46,12 @@ const home = createSlice({
     },
     changeHighscoreInfoAction(state, action) {
       state.goodHighscore = action.payload;
+    },
+    changeHomeDiscountAction(state, action) {
+      state.homeDiscount = action.payload;
+    },
+    changehotRecommend(state, action) {
+      state.hotRecommend = action.payload;
     },
   },
 
@@ -46,8 +63,12 @@ const home = createSlice({
   },
 });
 
-export const { changeGoodPriceInfoAction, changeHighscoreInfoAction } =
-  home.actions;
+export const {
+  changeGoodPriceInfoAction,
+  changeHighscoreInfoAction,
+  changeHomeDiscountAction,
+  changehotRecommend,
+} = home.actions;
 export { feachHomeDataAction };
 
 export default home.reducer;

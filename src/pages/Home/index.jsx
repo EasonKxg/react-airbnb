@@ -1,45 +1,50 @@
 import React, { memo, useEffect } from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
 
-import { feachHomeDataAction } from "store/modules/home";
-import { HomeStyleWrapper } from "./style";
 import HomeBanner from "./children/HomeBanner";
 import HomeSection from "./children/HomeSection";
+import HomeSectionTab from "./children/HomeSectionTab";
+import { feachHomeDataAction } from "store/modules/home";
+import { HomeStyleWrapper } from "./style";
+import { isEmptyObject } from "../../utils/isEmptyObject";
 
 const Home = memo(() => {
   const dispatch = useDispatch();
+
   // 发起请求
   useEffect(() => {
     dispatch(feachHomeDataAction());
   }, [dispatch]);
 
   // 映射 store 得数据
-  const { goodPriceInfo, goodHighscore } = useSelector(
-    (state) => ({
-      goodPriceInfo: state.homeModule.goodPriceInfo,
-      goodHighscore: state.homeModule.goodHighscore,
-    }),
-    shallowEqual
-  );
+  const { goodPriceInfo, goodHighscore, homeDiscount, hotRecommend } =
+    useSelector(
+      (state) => ({
+        goodPriceInfo: state.homeModule.goodPriceInfo,
+        goodHighscore: state.homeModule.goodHighscore,
+        homeDiscount: state.homeModule.homeDiscount,
+        hotRecommend: state.homeModule.hotRecommend,
+      }),
+      shallowEqual
+    );
+
   return (
     <HomeStyleWrapper>
-      <HomeBanner />
+      {/* <HomeBanner /> */}
       <div className="conter-wrap">
-        <HomeSection infoData={goodPriceInfo} />
-        <HomeSection infoData={goodHighscore} />
+        {isEmptyObject(homeDiscount) && (
+          <HomeSectionTab infoData={homeDiscount} />
+        )}
+        {/* {isEmptyObject(hotRecommend) && (
+          <HomeSectionTab infoData={hotRecommend} />
+        )} */}
+        {/* {isEmptyObject(goodPriceInfo) && (
+          <HomeSection infoData={goodPriceInfo} />
+        )}
+        {isEmptyObject(goodHighscore) && (
+          <HomeSection infoData={goodHighscore} />
+        )} */}
       </div>
-
-      {/* <div className="conter-wrap">
-        <SectionHeader title={goodPriceInfo.title} />
-        <SectionRooms roomList={goodPriceInfo?.list?.slice(0, 8)} />
-      </div>
-      <div className="conter-wrap">
-        <SectionHeader
-          title={goodHighscore.title}
-          subtitle={goodHighscore.subtitle}
-        />
-        <SectionRooms roomList={goodHighscore?.list?.slice(0, 8)} />
-      </div> */}
     </HomeStyleWrapper>
   );
 });
