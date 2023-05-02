@@ -4,6 +4,7 @@ import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import HomeBanner from "./children/HomeBanner";
 import HomeSection from "./children/HomeSection";
 import HomeSectionTab from "./children/HomeSectionTab";
+import HomeLongfor from "./children/HomeLongfor";
 import { feachHomeDataAction } from "store/modules/home";
 import { HomeStyleWrapper } from "./style";
 import { isEmptyObject } from "../../utils/isEmptyObject";
@@ -17,33 +18,41 @@ const Home = memo(() => {
   }, [dispatch]);
 
   // 映射 store 得数据
-  const { goodPriceInfo, goodHighscore, homeDiscount, hotRecommend } =
-    useSelector(
-      (state) => ({
-        goodPriceInfo: state.homeModule.goodPriceInfo,
-        goodHighscore: state.homeModule.goodHighscore,
-        homeDiscount: state.homeModule.homeDiscount,
-        hotRecommend: state.homeModule.hotRecommend,
-      }),
-      shallowEqual
-    );
+  const {
+    goodPriceInfo,
+    goodHighscore,
+    homeDiscount,
+    hotRecommend,
+    logforData,
+  } = useSelector(
+    (state) => ({
+      goodPriceInfo: state.homeModule.goodPriceInfo,
+      goodHighscore: state.homeModule.goodHighscore,
+      homeDiscount: state.homeModule.homeDiscount,
+      hotRecommend: state.homeModule.hotRecommend,
+      logforData: state.homeModule.longforData,
+    }),
+    shallowEqual
+  );
 
   return (
     <HomeStyleWrapper>
-      {/* <HomeBanner /> */}
+      <HomeBanner />
       <div className="conter-wrap">
         {isEmptyObject(homeDiscount) && (
           <HomeSectionTab infoData={homeDiscount} />
         )}
-        {/* {isEmptyObject(hotRecommend) && (
+        {isEmptyObject(hotRecommend) && (
           <HomeSectionTab infoData={hotRecommend} />
-        )} */}
-        {/* {isEmptyObject(goodPriceInfo) && (
+        )}
+
+        {isEmptyObject(logforData) && <HomeLongfor infoData={logforData} />}
+        {isEmptyObject(goodPriceInfo) && (
           <HomeSection infoData={goodPriceInfo} />
         )}
         {isEmptyObject(goodHighscore) && (
           <HomeSection infoData={goodHighscore} />
-        )} */}
+        )}
       </div>
     </HomeStyleWrapper>
   );

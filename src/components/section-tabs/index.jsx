@@ -11,9 +11,6 @@ function SectionTab(props) {
     setCurrent(index);
     tabClick(index, name);
   }
-  for (let i = 0; i < 10; i++) {
-    tanNames.push(`地名${i}`);
-  }
   return (
     <SectionTabStyleWrapper>
       <ScrollView>

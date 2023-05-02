@@ -5,6 +5,7 @@ import {
   getHomeHighScoreData,
   getHomeDiscountData,
   getHomeHotRecommendData,
+  getHomeLongforData,
 } from "services/modules/home";
 
 // 使用 createAsyncThunk 创建异步请求函数
@@ -29,6 +30,10 @@ const feachHomeDataAction = createAsyncThunk(
     getHomeHotRecommendData().then((res) => {
       dispatch(changehotRecommend(res));
     });
+    getHomeLongforData().then((res) => {
+      console.log(res);
+      dispatch(changeLongforData(res));
+    });
   }
 );
 
@@ -39,6 +44,7 @@ const home = createSlice({
     goodHighscore: {},
     homeDiscount: {},
     hotRecommend: {},
+    longforData: {},
   },
   reducers: {
     changeGoodPriceInfoAction(state, action) {
@@ -52,6 +58,9 @@ const home = createSlice({
     },
     changehotRecommend(state, action) {
       state.hotRecommend = action.payload;
+    },
+    changeLongforData(state, action) {
+      state.longforData = action.payload;
     },
   },
 
@@ -68,6 +77,7 @@ export const {
   changeHighscoreInfoAction,
   changeHomeDiscountAction,
   changehotRecommend,
+  changeLongforData,
 } = home.actions;
 export { feachHomeDataAction };
 

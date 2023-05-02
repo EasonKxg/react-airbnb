@@ -9,7 +9,7 @@ const NotFound = React.lazy(() => import("pages/NotFound"));
 const routes = [
   {
     path: "/",
-    element: <Navigate to="/home" />,
+    element: <Navigate to="/entire" />,
   },
   {
     path: "/home",
