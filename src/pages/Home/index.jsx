@@ -1,6 +1,5 @@
 import React, { memo, useEffect } from "react";
 import { useDispatch, useSelector, shallowEqual } from "react-redux";
-
 import HomeBanner from "./children/HomeBanner";
 import HomeSection from "./children/HomeSection";
 import HomeSectionTab from "./children/HomeSectionTab";
@@ -8,7 +7,7 @@ import HomeLongfor from "./children/HomeLongfor";
 import { feachHomeDataAction } from "store/modules/home";
 import { HomeStyleWrapper } from "./style";
 import { isEmptyObject } from "../../utils/isEmptyObject";
-
+ 
 const Home = memo(() => {
   const dispatch = useDispatch();
 
