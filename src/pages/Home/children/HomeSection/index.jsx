@@ -4,7 +4,7 @@ import SectionHeader from "components/section-header";
 import SectionRooms from "components/section-rooms";
 import SectionFooter from "components/section-footer";
 
-import { HomeSectionStyleWrapper } from "./style";
+import { HomeSectionStyleWrapper } from "./style";  
 
 function HomeSection(props) {
   const { infoData = {} } = props;

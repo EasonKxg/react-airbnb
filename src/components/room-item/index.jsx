@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React, { memo } from "react";
 import { Rating } from "@mui/material";
+import { Carousel } from "antd";
 import { RoomItemStyleWrpper } from "./style";
 
 const RoomItem = memo((props) => {
@@ -9,9 +10,23 @@ const RoomItem = memo((props) => {
   return (
     <RoomItemStyleWrpper itemWidth={itemWidth}>
       <div className="inner-wrap">
-        <div className="image">
+        {/* <div className="image">
           <img src={itemData.picture_url} alt="404" />
-        </div>
+        </div> */}
+
+        {/* 却换 */}
+        
+        {/* 图片轮播图 */}
+        <Carousel dots={false}>
+          {itemData?.picture_urls.map((item) => {
+            return (
+              <div className="item-image-wrap" key={item}>
+                <img src={item} alt="404" />
+              </div>
+            );
+          })}
+        </Carousel>
+
         <div className="desc">{itemData.verify_info.messages.join(" · ")}</div>
         <div className="name">{itemData.name}</div>
         <div className="price">{itemData.price_format}</div>

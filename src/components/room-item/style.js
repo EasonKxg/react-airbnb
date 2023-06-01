@@ -5,10 +5,22 @@ export const RoomItemStyleWrpper = styled.div`
   padding: 8px;
   color: red;
   .inner-wrap {
-    .image {
+    /* .image {
       height: 160px;
       border-radius: 5px;
       img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        background-position: center;
+        background-size: 100% 100%;
+        border-radius: 5px;
+      }
+    } */
+    .item-image-wrap {
+      height: 160px;
+      border-radius: 5px;
+      .image {
         width: 100%;
         height: 100%;
         object-fit: cover;
