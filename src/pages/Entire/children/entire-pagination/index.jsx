@@ -14,7 +14,7 @@ const EntirePagination = memo((props) => {
       roomList: state.entireModule.roomList,
     };
   }, shallowEqual);
-  console.log(currentPage);
+
   const totalPage = Math.ceil(totalCount / 20);
   const startCount = currentPage * 20 + 1;
   const endCount = (currentPage + 1) * 20;
