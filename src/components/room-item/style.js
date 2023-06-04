@@ -5,7 +5,7 @@ export const RoomItemStyleWrpper = styled.div`
   padding: 8px;
   color: red;
   .inner-wrap {
-    /* .image {
+    .image {
       height: 160px;
       border-radius: 5px;
       img {
@@ -16,7 +16,7 @@ export const RoomItemStyleWrpper = styled.div`
         background-size: 100% 100%;
         border-radius: 5px;
       }
-    } */
+    }
     .item-image-wrap {
       height: 160px;
       border-radius: 5px;
@@ -65,6 +65,33 @@ export const RoomItemStyleWrpper = styled.div`
               transparent 0%,
               rgba(0, 0, 0, 0.25) 100%
             );
+          }
+        }
+      }
+      .indicator{
+        position: absolute;
+        z-index: 9;
+        bottom: 10px;
+        left: 0;
+        right: 0;
+        width: 30%;
+        margin: 0 auto;
+          .item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 14.29%;
+          .dot {
+            width: 6px;
+            height: 6px;
+            background-color: #fff;
+            border-radius: 50%;
+
+            &.active {
+              width: 8px;
+              background-color: red;
+              height: 8px;
+            }
           }
         }
       }
