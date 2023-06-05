@@ -18,11 +18,11 @@ const EntireRoom = memo((props) => {
   const handleItemClick = useCallback(
     (item) => {
       dispatch(changeDetailInfoAction(item));
+      window.sessionStorage.setItem("detailItem", JSON.stringify(item));
       navigate("/detail");
     },
     [navigate, dispatch]
   );
-
   return (
     <EntireRoomStyleWrapper>
       {roomList.map((item) => {
