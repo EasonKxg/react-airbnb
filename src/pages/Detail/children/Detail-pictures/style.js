@@ -70,4 +70,15 @@ export const DetailPicturesStyleWrapper = styled.div`
       border: 1px solid #000;
     }
   }
+  .show-btn {
+    position: absolute;
+    z-index: 999;
+    right: 15px;
+    bottom: 300px;
+    line-height: 22px;
+    padding: 6px 15px;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+  }
 `
