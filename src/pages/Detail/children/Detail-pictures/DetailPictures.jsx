@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector, useDispatch, shallowEqual } from "react-redux";
 import { changeDetailInfoAction } from "store/modules/detail";
 import PictureBrowser from "baseUi/picture-browser";
 import { DetailPicturesStyleWrapper } from "./style";
@@ -28,7 +28,7 @@ const DetailPictures = memo(() => {
     return () => {
       window.document.body.style.overflow = "auto";
     };
-  });
+  }, [shallowEqual]);
 
   function handleShowPictureBrowserClick(isState) {
     setIsShowPictureBrowser(isState);
@@ -47,7 +47,10 @@ const DetailPictures = memo(() => {
     <DetailPicturesStyleWrapper>
       <div className="pictures">
         <div className="left">
-          <div className="item">
+          <div
+            className="item"
+            onClick={() => handleShowPictureBrowserClick(true)}
+          >
             <img src={detailInfo?.picture_urls?.[0]} alt="" />
             <div className="cover"></div>
           </div>
@@ -55,7 +58,11 @@ const DetailPictures = memo(() => {
         <div className="right">
           {detailInfo?.picture_urls?.slice(1, 5).map((item) => {
             return (
-              <div className="item" key={item}>
+              <div
+                className="item"
+                key={item}
+                onClick={() => handleShowPictureBrowserClick(true)}
+              >
                 <img src={item} alt="" />
                 <div className="cover"></div>
               </div>
@@ -63,10 +70,15 @@ const DetailPictures = memo(() => {
           })}
         </div>
       </div>
-      
+
       {!isShowPictureBrowser && showBtnEl}
 
-      {isShowPictureBrowser && <PictureBrowser />}
+      {isShowPictureBrowser && (
+        <PictureBrowser
+          pictureUrls={detailInfo?.picture_urls}
+          closeClcik={() => handleShowPictureBrowserClick(false)}
+        />
+      )}
     </DetailPicturesStyleWrapper>
   );
 });
