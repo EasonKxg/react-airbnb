@@ -11,6 +11,7 @@ const PanelStyleWrapper = styled.div`
     border-radius: 20px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+    z-index: 99;
     .line {
       ${(props) => props.theme.mixin.lineBottom}
     }

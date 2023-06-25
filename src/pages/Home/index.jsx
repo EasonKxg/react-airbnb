@@ -5,15 +5,17 @@ import HomeSection from "./children/HomeSection";
 import HomeSectionTab from "./children/HomeSectionTab";
 import HomeLongfor from "./children/HomeLongfor";
 import { feachHomeDataAction } from "store/modules/home";
+import { changeHeaderConfig } from "store/modules/main";
 import { HomeStyleWrapper } from "./style";
 import { isEmptyObject } from "../../utils/isEmptyObject";
- 
+
 const Home = memo(() => {
   const dispatch = useDispatch();
 
   // 发起请求
   useEffect(() => {
     dispatch(feachHomeDataAction());
+    dispatch(changeHeaderConfig({ isFixed: true }));
   }, [dispatch]);
 
   // 映射 store 得数据
@@ -35,7 +37,7 @@ const Home = memo(() => {
   );
 
   return (
-    <HomeStyleWrapper>
+    <HomeStyleWrapper >
       <HomeBanner />
       <div className="conter-wrap">
         {isEmptyObject(homeDiscount) && (
